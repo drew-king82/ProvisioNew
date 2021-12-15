@@ -1,5 +1,12 @@
-<jsp:include page="./TopNav.jsp"></jsp:include>
+<head>
+    <link rel=stylesheet href="../css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+</head>
 
+<jsp:include page="./TopNav.jsp"></jsp:include>
+<div id="site">
+<div id="container">
 <div>
     <div id="logo"><img src="../images/proviso1.png" /></div>
 
@@ -18,8 +25,8 @@
                     <td><input type="password" class="text_input" name="#input2" /></td>
                 </tr>
                 <tr>
-                    <td><input type=submit value=submit /></td>
-                    <td><input type=reset value=clear /></td>
+                    <td><input type=submit value=submit class="button" /></td>
+                    <td><input type=reset value=clear class="button" /></td>
                 </tr>
                 <tr>
                     <td colspan=100%>
