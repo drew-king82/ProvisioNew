@@ -9,6 +9,7 @@
     <div>
         <table>
             <form>
+             <input type="hidden" name="action" value="login" /> 
                 <tr>
                     <td>User Name:</td>
                     <td><input type="text" class="text_input" name="#input1" /></td>
