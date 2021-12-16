@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
 
-
-<div id="footer">
-    Copyright 2021 &copy; Bellevue
-</div>
-</div>
 </body>
 </html>
