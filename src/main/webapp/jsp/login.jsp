@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="text" class="text_input" name="password" /></td>
+                    <td><input type="password" class="text_input" name="password" /></td>
                 </tr>
                 <tr>
                     <td><input type=submit value=submit /></td>

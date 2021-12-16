@@ -58,7 +58,7 @@ public class provisioServlet extends HttpServlet {
 			    //once the user clicks "submit" on the cutomer.jsp, the 
 			    //user will be created, and redirected to the login page
 		        case "createCustomer":
-		        	createCustomer(request,response);
+//		        	createCustomer(request,response);
 		        	url = base + "login.jsp";
 		        	break;
 		        //once the user clicks "login" on the welcome page, the login 
@@ -75,30 +75,37 @@ public class provisioServlet extends HttpServlet {
 		        //if user clicks submit on booking page, the reservation is created
 		        //and the user is redirected to the booking confirmation page
 		        case "createReservation":
-	//	        	createReservation(request,response);
+		        	createReservation(request,response);
 		        	url = base + "confirmation.jsp";
+		        	break;
 		        //about us page
-		        case "about":
-		        	url = base + "about.jsp";
-		        //contact page
-		        case "contact":
-		        	url = base + "contact.jsp";
 		        //Find reservation Page - should be a basic form that queries by customer ID
 		        case "reservationSearch":
 		        	url = base + "search.jsp";
+		        	break;
 		        //This is the function that is called when the find reservation form is submitted
 		        //It will return the view reservations page, which should be capable of showing
 		        //a number of reservations by customer id
 		        case "reservationReturn":
 		        	findReservation(request, response);
 		        	url = base + "lookup.jsp";
+		        	break;
 		        //search loyalty points by customer id using form
 		        case "loyaltySearch":
 		        	url = base + "loyalty.jsp";
+		        	break;
 		        //return loyalty points along with historical reservations
 		        case "points":
 		        	getPoints(request, response);
 		        	url = base + "points.jsp";
+		        	break;
+		        case "about":
+		        	url = base + "about.jsp";
+		        	break;
+		        //contact page
+		        case "contact":
+		        	url = base + "contact.jsp";
+		        	break;
 		        }
 		        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
 
