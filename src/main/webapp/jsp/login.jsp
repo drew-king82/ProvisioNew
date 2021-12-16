@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
 <jsp:include page="./TopNav.jsp"></jsp:include>
 
 <div>
@@ -12,11 +16,11 @@
              <input type="hidden" name="action" value="login" /> 
                 <tr>
                     <td>User Name:</td>
-                    <td><input type="text" class="text_input" name="#input1" /></td>
+                    <td><input type="text" class="text_input" name="user" /></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" class="text_input" name="#input2" /></td>
+                    <td><input type="text" class="text_input" name="password" /></td>
                 </tr>
                 <tr>
                     <td><input type=submit value=submit /></td>
@@ -40,3 +44,4 @@
 </div>
 
 <jsp:include page="./Footer.jsp"></jsp:include>
+</html>

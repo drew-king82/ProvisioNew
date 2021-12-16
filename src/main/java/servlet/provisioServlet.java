@@ -75,7 +75,7 @@ public class provisioServlet extends HttpServlet {
 		        //if user clicks submit on booking page, the reservation is created
 		        //and the user is redirected to the booking confirmation page
 		        case "createReservation":
-		        	createReservation(request,response);
+	//	        	createReservation(request,response);
 		        	url = base + "confirmation.jsp";
 		        //about us page
 		        case "about":

@@ -4,9 +4,9 @@ import java.sql.DriverManager;
 
 public class JdbcManager {
 	//Need to update these once the db_init script is done
-  private String jdbcUrl = "jdbc:mysql://localhost:3306/provisio?useSSL=false";
-  private String jdbcUserName = "provisio_user";
-  private String jdbcPassword = "provisiopass";
+  private String jdbcUrl = "jdbc:mysql://localhost:3306/proviso?useSSL=false";
+  private String jdbcUserName = "proviso_user";
+  private String jdbcPassword = "provisopass";
   
   public JdbcManager() {
   

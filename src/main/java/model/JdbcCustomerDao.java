@@ -43,11 +43,11 @@ public class JdbcCustomerDao implements CustomerDao{
 	public boolean login(String email, String password){
 		Connection con=db.getConn();
 		boolean isValidUser = false;
-		if(con!=null) {
+		if(con != null) {
 			try {
 				Statement S1=con.createStatement();
 				String addQuery=
-					"SELECT * FROM customer where email=" + email + " and password = " + password;
+					"SELECT * FROM customer where email='" + email + "' and passwd = '" + password+"'";
 				try {
 					ResultSet result=S1.executeQuery(addQuery);
 					try {

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-</div>Contact Info</div>
+</div>Login Successful, This is the reservation landing page</div>
 </body>
 </html>
