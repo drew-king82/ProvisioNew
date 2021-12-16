@@ -1,3 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Welcome to the Proviso Portal</title>
+    <link rel=stylesheet href="../css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+
+<div id="site">
+	<div id="container">
 <jsp:include page="./TopNav.jsp"></jsp:include>
 
 <div>
@@ -40,3 +59,8 @@
 </div>
 
 <jsp:include page="./Footer.jsp"></jsp:include>
+</div>
+</div>
+</div>
+</body>
+</html>

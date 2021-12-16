@@ -1,5 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+
 <div id="footer">
-    Copyright 2021 &copy;
+    Copyright 2021 &copy; Bellevue
 </div>
 </div>
 </body>

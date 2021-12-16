@@ -1,15 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Proviso!</title>
-</head>
-<body>
-<div id="site">
-
-    <div class="navBar">
+	<div class="navBar">
         <div class="navButton">
             <a href="reservation.html" class="nav_link">Check-In</a>
         </div>
@@ -25,4 +14,3 @@
         <div class="navButton">
             <a href="contact.jsp" class="nav_link">Contact Us</a>
         </div>
-    </div>
