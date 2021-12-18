@@ -24,7 +24,7 @@ public class JdbcCustomerDao implements CustomerDao{
 			  Statement S1=con.createStatement();	
 			  //Need to update addquery to handle password hash rather than plain text
 			  String addQuery=
-			"insert into customer(email, firstName, lastName, password)values('"+newCustomer.getEmail()+"', '"+newCustomer.getFirstName()+"', '"+newCustomer.getLastName()+"', '"+newCustomer.getPassword()+"')";
+			"insert into customer(email, firstName, lastName, passwd,loyalty)values('"+newCustomer.getEmail()+"', '"+newCustomer.getFirstName()+"', '"+newCustomer.getLastName()+"', '"+newCustomer.getPassword()+"',0)";
 	
 			try {
 				S1.executeUpdate(addQuery);
@@ -66,6 +66,31 @@ public class JdbcCustomerDao implements CustomerDao{
 			} 
 		}
 		return isValidUser;
+	}
+	
+	@Override
+	public int findId(String email) {
+		Connection con=db.getConn();
+		int id = 0;
+		try {
+			Statement S1=con.createStatement();
+			String findQuery="Select cust_id from customer where email ='"+email+"'";
+			try {
+				ResultSet result=S1.executeQuery(findQuery);
+				try {
+					if (result.next()) {
+						id = result.getInt(1);
+					}
+				}finally {
+					result.close();
+				}
+			} finally {
+				S1.close();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return id;
 	}
 	
 	

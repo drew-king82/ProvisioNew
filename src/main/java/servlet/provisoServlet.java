@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,16 +18,16 @@ import model.JdbcReservationDao;
 
 
 /**
- * Servlet implementation class Provisio
+ * Servlet implementation class proviso
  */
-@WebServlet("/ProvisoNew/*")
-public class provisioServlet extends HttpServlet {
+@WebServlet("/Proviso/*")
+public class provisoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public provisioServlet() {
+    public provisoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,6 +48,10 @@ public class provisioServlet extends HttpServlet {
 		    String base = "/jsp/";
 		    String url = base + "index.jsp";
 		    String action = request.getParameter("action");
+
+		    System.out.println("Action value from the doPost method: " + action);
+            System.out.println("URL value from the doPost method: " + url);
+		    
 		    if (action != null) {
 		        switch (action) {
 		        //if user clicks on the "create an account" button, it will take
@@ -58,7 +63,7 @@ public class provisioServlet extends HttpServlet {
 			    //once the user clicks "submit" on the cutomer.jsp, the 
 			    //user will be created, and redirected to the login page
 		        case "createCustomer":
-//		        	createCustomer(request,response);
+		        	createCustomer(request,response);
 		        	url = base + "login.jsp";
 		        	break;
 		        //once the user clicks "login" on the welcome page, the login 
@@ -106,17 +111,21 @@ public class provisioServlet extends HttpServlet {
 		        case "contact":
 		        	url = base + "contact.jsp";
 		        	break;
+		        case "loginPage":
+		        	url = base + "login.jsp";
+		        	break;
 		        }
-		        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
-
-				requestDispatcher.forward(request, response);   
+ 
 	}
+			    RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
+
+				requestDispatcher.forward(request, response);  
 	}
 	
 	private String login(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
 		//define fields, may need to be updated based on what we decide for fields
 		
-		String user=request.getParameter("user");	
+		String user=request.getParameter("name");	
 		//Need to update to not use plaintext password
 		String password=request.getParameter("password");
 		
@@ -138,8 +147,8 @@ public class provisioServlet extends HttpServlet {
 		//define fields, may need to be updated based on what we decide for fields
 		
 		String email=  request.getParameter("email");
-		String firstname= request.getParameter("firstname");
-		String lastname= request.getParameter("lastname");	
+		String firstname= request.getParameter("fname");
+		String lastname= request.getParameter("lname");	
 		//Need to update to not use plaintext password
 		String password= request.getParameter("password");
 		
@@ -158,32 +167,38 @@ public class provisioServlet extends HttpServlet {
 	
 	private void createReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
 		//define fields, may need to be updated based on what we decide for fields
-		boolean wifi = false;
-		boolean breakfast = false;
-		boolean parking = false;
-		
-		int customerId = Integer.valueOf(request.getParameter("customerId"));
+		int wifi = 0;
+		int breakfast = 0;
+		int parking = 0;
+		int cost = 0;
+		String email = request.getParameter("email");
+	
 		//roomsize wifi breakfast parking guests checkin checkout
-		int roomSize = Integer.valueOf(request.getParameter("roomSize"));
-		if (request.getParameter("wifi") == "true") {
-			 wifi = true;
+		String roomSize =request.getParameter("roomSize");
+		if (request.getParameter("wifi") == "wifi") {
+			 wifi = 1;
 		}
-		if (request.getParameter("breakfast") == "true") {
-			 breakfast = true;
+		if (request.getParameter("breakfast") == "breakfast") {
+			 breakfast = 1;
 		}
-		if (request.getParameter("parking") == "true") {
-			 parking = true;
+		if (request.getParameter("parking") == "parking") {
+			 parking = 1;
 		}
 		int guests = Integer.valueOf(request.getParameter("guests"));
 		String checkIn = request.getParameter("checkIn");
+		
+		
 		String checkOut = request.getParameter("checkOut");
-		int numberNights = Integer.valueOf(request.getParameter("numberNights"));
+		
+		int numberNights = Integer.valueOf(request.getParameter("nights"));
 		
 		//create new JdbcCustomerDao object
 		JdbcReservationDao createJR=new JdbcReservationDao();
+		JdbcCustomerDao newCustomer = new JdbcCustomerDao();
+		int customerId =  newCustomer.findId(email);
 		
 		//Create a new Customer object, using defined fields
-		Reservation addReservation= new Reservation(customerId, roomSize, wifi, breakfast, parking, guests, checkIn, checkOut, numberNights);
+		Reservation addReservation= new Reservation(customerId, roomSize, wifi, breakfast, parking, guests, checkIn, checkOut, numberNights, cost);
 				
 		//call JdbcCustomerDao add method, passing Customer object as parameter
 		createJR.create(addReservation);
@@ -193,7 +208,10 @@ public class provisioServlet extends HttpServlet {
 		}
 	
 	private List<Reservation> findReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
-		int customerId = Integer.valueOf(request.getParameter("customerId"));
+		String email = request.getParameter("email");
+		
+		JdbcCustomerDao newCustomer = new JdbcCustomerDao();
+		int customerId =  newCustomer.findId(email);
 		
 		JdbcReservationDao findJR = new JdbcReservationDao();
 		

@@ -1,31 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    
-    %>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Proviso!</title>
 </head>
 <body>
-<div id="site">
+<div class="navBar">
 <!-- TODO update booking/reservation - need to redirect to login page before reserving.  about and contact pages not resolving -->
     <div class="navBar">
         <div class="navButton">
-            <a href="reservation.html" class="nav_link">Check-In</a>
+            <a href="Proviso" class="nav_link">Home</a>
         </div>
         <div class="navButton">
-            <a href="../ProvisoNew?action=createCustomer" class="nav_link">Member Login</a>
+            <a href="Proviso?action=newCustomer" class="nav_link">Member Login</a>
         </div>
         <div class="navButton">
-            <a href="book.html" class="nav_link">Book a Stay</a>
+            <a href="Proviso?action=reservation" class="nav_link">My Reservation</a>
         </div>
         <div class="navButton">
-            <a href="../ProvisoNew?action=about" class="nav_link">About Us</a>
+            <a href="Proviso?action=about" class="nav_link">About Us</a>
         </div>
         <div class="navButton">
-            <a href="../ProvisoNew?action=contact" class="nav_link">Contact Us</a>
+            <a href="Proviso?action=contact" class="nav_link">Contact Us</a>
         </div>
     </div>
-</div>
+    </div>
+</body>
+</html>

@@ -8,4 +8,6 @@ public interface CustomerDao{
 	//find customer by id
 	
 	boolean login(String email, String password);
+	
+	int findId(String email);
 	}

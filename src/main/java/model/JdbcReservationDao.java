@@ -23,7 +23,7 @@ public class JdbcReservationDao implements ReservationDao{
 			try {
 			  Statement S1=con.createStatement();	
 			  String addQuery=
-			"insert into reservation(customerId, roomSize, wifi, breakfast, parking, guests, checkIn, checkOut, numberNights)values"
+			"insert into reservation(cust_id, roomSize, wifi, breakfast, parking, guests, checkIn, checkOut, numberNights, cost)values"
 			+ "('"+newReservation.getCustomerId()+
 			"', '" + newReservation.getRoomSize()+
 			"','" + newReservation.getWifi()+
@@ -32,7 +32,8 @@ public class JdbcReservationDao implements ReservationDao{
 			"','" + newReservation.getParking()+
 			"','" + newReservation.getCheckIn()+
 			"','" + newReservation.getCheckOut()+
-			"','" + newReservation.getNumberNights() +"')";
+			"','" + newReservation.getNumberNights() +
+			"','" + newReservation.getCost(newReservation.getGuests(), newReservation.getNumberNights(), newReservation.getWifi(), newReservation.getBreakfast(), newReservation.getParking()) +"')";
 	
 			try {
 				S1.executeUpdate(addQuery);
@@ -57,12 +58,12 @@ public class JdbcReservationDao implements ReservationDao{
 		if (con!=null) {
 			try {
 				Statement S1=con.createStatement();	
-				String findQuery="select from reservation where customerId =" + customerId;
+				String findQuery="select from reservation where cust_id =" + customerId;
 				try {
 					ResultSet result = S1.executeQuery(findQuery);
 					try {
 						while(result.next()) {
-							Reservation newReservation=new Reservation(result.getInt(1), result.getInt(2), result.getBoolean(3), result.getBoolean(4),result.getBoolean(5), result.getInt(6), result.getString(7), result.getString(8), result.getInt(9));
+							Reservation newReservation=new Reservation(result.getInt(1), result.getString(2), result.getInt(3), result.getInt(4),result.getInt(5), result.getInt(6), result.getString(7), result.getString(8), result.getInt(9), result.getInt(10));
 							reservations.add(newReservation);
 						}
 					}catch (Exception e){
@@ -90,7 +91,7 @@ public class JdbcReservationDao implements ReservationDao{
 			try {
 				Statement S1=con.createStatement();
 				String pointsQuery=
-					"SELECT numberNights FROM reservations where customerId=" + customerId;
+					"SELECT numberNights FROM reservations where cust_id=" + customerId;
 				try {
 					ResultSet result=S1.executeQuery(pointsQuery);
 					try {

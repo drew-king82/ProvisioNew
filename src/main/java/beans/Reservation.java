@@ -3,10 +3,10 @@ package beans;
 public class Reservation {
  private int reservationId;
  private int customerId;
- private int roomSize;
- private boolean wifi;
- private boolean breakfast;
- private boolean parking;
+ private String roomSize;
+ private int wifi;
+ private int breakfast;
+ private int parking;
  private int guests;
  private String checkIn;
  private String checkOut;
@@ -14,7 +14,7 @@ public class Reservation {
  private double cost;
  private int loyalty;
  
- public Reservation(int reservationId, int customerId, int roomSize, boolean wifi, boolean breakfast, boolean parking, int guests, String checkIn, String checkOut, int numberNights) {
+ public Reservation(int reservationId, int customerId, String roomSize, int wifi, int breakfast, int parking, int guests, String checkIn, String checkOut, int numberNights, int cost) {
 	 	this.reservationId = reservationId;
 		this.customerId = customerId;
 		this.roomSize = roomSize;
@@ -29,7 +29,7 @@ public class Reservation {
 		this.loyalty=numberNights * 150;
 	}
 
- public Reservation(int customerId, int roomSize, boolean wifi, boolean breakfast, boolean parking, int guests, String checkIn, String checkOut, int numberNights) {
+ public Reservation(int customerId, String roomSize, int wifi, int breakfast, int parking, int guests, String checkIn, String checkOut, int numberNights, int cost) {
 		this.customerId = customerId;
 		this.roomSize = roomSize;
 		this.wifi = wifi;
@@ -55,28 +55,28 @@ public class Reservation {
 	 public int getCustomerId () {
 		 return customerId;
 	 }
-	 public void setRoomSize(int roomSize) {
+	 public void setRoomSize(String roomSize) {
 		 this.roomSize=roomSize;
 	 }
-	 public int getRoomSize() {
+	 public String getRoomSize() {
 		 return roomSize;
 	 }
-	 public void setWifi(boolean wifi) {
+	 public void setWifi(int wifi) {
 		 this.wifi=wifi;
 	 }
-	 public boolean getWifi () {
+	 public int getWifi () {
 		 return wifi;
 	 }
-	 public void setBreakfast(boolean breakfast) {
+	 public void setBreakfast(int breakfast) {
 		 this.breakfast=breakfast;
 	 }
-	 public boolean getBreakfast () {
+	 public int getBreakfast () {
 		 return breakfast;
 	 }
-	 public void setParking(boolean parking) {
+	 public void setParking(int parking) {
 		 this.parking=parking;
 	 }
-	 public boolean getParking () {
+	 public int getParking () {
 		 return parking;
 	 }
 	 public void setGuests(int guests) {
@@ -103,7 +103,7 @@ public class Reservation {
 	 public int getNumberNights() {
 		 return numberNights;
 	 }
-	 public double getCost(int guests, int numberNights, boolean wifi, boolean breakfast, boolean parking) {
+	 public double getCost(int guests, int numberNights, int wifi, int breakfast, int parking) {
 		 double price;
 		 //set price per night based on number of guests
 		 if (guests < 3) {
@@ -112,17 +112,17 @@ public class Reservation {
 			 price = 150;
 		 }
 		 //breakfast is charged per night
-		 if (breakfast == true) {
+		 if (breakfast == 1) {
 			 price = price + 8.99;
 		 }
 		 //parking is charged per night
-		 if (parking == true) {
+		 if (parking == 1) {
 			 price = price + 19.99;
 		 }	
 		 //total price including parking and breakfast per night times number of nights
 		 cost = price * numberNights;
 		 //wifi is charged per stay, so is added to cost rather than price
-		 if (wifi == true) {
+		 if (wifi == 1) {
 			 cost = cost + 19.99;
 		 }
 		 return cost;	 
