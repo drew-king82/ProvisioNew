@@ -18,6 +18,13 @@
 	<p>
 	<h2>View, Edit and Cancel your reservations</h2>
 	</p>
+	<table class="table-400">
+		<tr>
+			<td>
+				Your current point balance is: <%-- code here --%>
+			</td>	
+		</tr>
+	</table>
 	<table class="table-800 table-border">
 		<tr>
 			<td class="td-c">
