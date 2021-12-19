@@ -16,7 +16,7 @@
 <div id="site">
 <jsp:include page="./TopNav.jsp"></jsp:include>
 	<div id="container">
-		    <img src="../images/proviso2.png" class="logo picture-400" />
+		    <img src="../images/proviso2.png" class="logo picture-400 logo-round" />
 		    <p>
 		    &nbsp;
 		    </p>

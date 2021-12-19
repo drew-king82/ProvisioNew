@@ -27,7 +27,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="td-l" colspan=30%>User Name:</td>
+                    <td class="td-l" colspan=30%>Email:</td>
                     <td class="td-c"><input type="text" class="input-text" name="name" /></td>
                 </tr>
                 <tr>

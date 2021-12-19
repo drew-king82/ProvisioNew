@@ -51,7 +51,7 @@
                     <input type=reset value=Clear class="button" /></td>
                 </tr>
                   <td colspan=100% class="td-c">
-                        Alread a Member? <a href="Proviso?action=loginPage">Login</a>
+                        Already a Member? <a href="Proviso?action=loginPage">Login</a>
                     </td>
             
         </table>

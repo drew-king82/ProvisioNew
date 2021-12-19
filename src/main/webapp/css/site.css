@@ -65,6 +65,10 @@ h3 {
 	display: block;
 	margin-left: auto;
     margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.logo-round {
     border-radius: 50%;
 }
 .logo-50 {
@@ -191,6 +195,12 @@ h3 {
     width: 600px;
    	font-size: 1.2em;
 }
+.table-800 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 750px;
+   	font-size: 0.8em;
+}
 
 .table-border {
     border: solid 2px #07173B;
@@ -253,7 +263,14 @@ a:hover a:visited{
 	border-radius: 3px;
 	border: solid 1px #07173B;
 	height: 25px;
-	width: 255px;
 	padding: 0 0 3px 3px;
-	
+}
+.input-s {
+		width: 75px;
+}
+.input-m {
+		width: 255px;
+}
+.input-l {
+		width: 350px;
 }

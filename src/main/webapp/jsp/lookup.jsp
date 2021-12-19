@@ -11,6 +11,77 @@
 <title>These are your Upcoming and Past Reservations</title>
 </head>
 <body>
+<div id="site">
+<jsp:include page="./TopNav.jsp"></jsp:include>
+	<div id="container">
+	<br />
+	<p>
+	<h2>View, Edit and Cancel your reservations</h2>
+	</p>
+	<table class="table-800 table-border">
+		<tr>
+			<td class="td-c">
+				Reservation ID:
+			</td>
+			<td class="td-c">
+				Room Size:
+			</td>
+			<td class="td-c">
+				Amenities: 
+			</td>
+			<td class="td-c">
+				CheckIn
+			</td>
+			<td class="td-c">
+				Checkout
+			</td>
+			<td class="td-c">
+				Length of Stay
+			</td>
+			<td class="td-c">
+				Total Cost
+			</td>																		
+		</tr>
+		
+		<%-- begin iteration of reservation here --%>
+		
+		<tr>
+			<td class="td-c">
+	
+			</td>
+			<td class="td-c">
+	
+			</td>
+			<td class="td-c">
 
+			</td>
+			<td class="td-c">
+
+			</td>
+			<td class="td-c">
+
+			</td>
+			<td class="td-c">
+
+			</td>
+			<td class="td-c">
+
+			</td>																		
+		</tr>
+		
+		
+	
+	
+	
+	</table>
+	
+	</div>
+
+<jsp:include page="./Footer.jsp"></jsp:include>
+</div>
+</body>
+</html>
+	
+	
 </body>
 </html>

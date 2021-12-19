@@ -56,13 +56,22 @@
 	<input type="hidden" name="action" value="createReservation" /> 
 	<table class="table-600 table-border">
 		<tr class="row-space">
-		<td>Email: <input type="text" name="email"></td>
+			<td>
+				Email: 
+				</td>
+			<td>
+				<input type="text" name="email" class="input-text input-m">
+			</td>
+		</tr>
+	
+		<tr class="row-space">
+
 			<td>Start of Stay: 
 			</td>
 			
 			
 			<td>
-			<input type="text" id="datepicker" name="checkIn">
+			<input type="text" id="datepicker" name="checkIn"  class="input-text input-m">
 			</td>
 		</tr>
 		<!-- Divide table rows -->
@@ -71,9 +80,17 @@
 			</td>
 			
 			
-			<td><input type="text" id="datepicker2" name="checkOut">
+			<td><input type="text" id="datepicker2" name="checkOut"  class="input-text input-m" >
 			</td>
-			<td>Number of Nights: <input type="text" name="nights"></td>
+			</tr>
+			<tr>
+			<td>
+			
+			Number of Nights: </td>
+			<td><input type="text" name="nights"  class="input-text input-s"></td>
+			
+			</tr>
+			
 		<tr class="tr">
 		<!-- Divide table rows -->		
 		<tr class="row-space">
@@ -110,7 +127,7 @@
 			
 			
 			<td>
-			<select name="guests" class="input-text td-c">
+			<select name="guests" class="input-text td-c input-m">
 				<option value="1">1-2 Guests</option>
 				<option value="2">3-5 Guests</option>
 			</select>
@@ -128,5 +145,7 @@
 
 <jsp:include page="./Footer.jsp"></jsp:include>
 </div>
+   
+
 </body>
 </html>
