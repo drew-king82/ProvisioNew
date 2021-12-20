@@ -58,12 +58,12 @@ public class JdbcReservationDao implements ReservationDao{
 		if (con!=null) {
 			try {
 				Statement S1=con.createStatement();	
-				String findQuery="select from reservation where cust_id =" + customerId;
+				String findQuery="select * from reservation where cust_id =" + customerId;
 				try {
 					ResultSet result = S1.executeQuery(findQuery);
 					try {
 						while(result.next()) {
-							Reservation newReservation=new Reservation(result.getInt(1), result.getString(2), result.getInt(3), result.getInt(4),result.getInt(5), result.getInt(6), result.getString(7), result.getString(8), result.getInt(9), result.getInt(10));
+							Reservation newReservation=new Reservation(result.getInt(1), result.getInt(2), result.getString(3), result.getInt(4), result.getInt(5),result.getInt(6), result.getInt(7), result.getString(8), result.getString(9), result.getInt(10), result.getInt(11));
 							reservations.add(newReservation);
 						}
 					}catch (Exception e){
@@ -91,7 +91,7 @@ public class JdbcReservationDao implements ReservationDao{
 			try {
 				Statement S1=con.createStatement();
 				String pointsQuery=
-					"SELECT numberNights FROM reservations where cust_id=" + customerId;
+					"SELECT numberNights FROM reservation where cust_id=" + customerId;
 				try {
 					ResultSet result=S1.executeQuery(pointsQuery);
 					try {
@@ -110,6 +110,7 @@ public class JdbcReservationDao implements ReservationDao{
 			} 
 		}
 		points = nights * 150;
+		
 		return points;
 	}
 }

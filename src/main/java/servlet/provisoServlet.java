@@ -1,15 +1,16 @@
 package servlet;
 
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 import beans.Customer;
 import beans.Reservation;
@@ -64,6 +65,7 @@ public class provisoServlet extends HttpServlet {
 			    //user will be created, and redirected to the login page
 		        case "createCustomer":
 		        	createCustomer(request,response);
+		        	HttpSession session = request.getSession(true);
 		        	url = base + "login.jsp";
 		        	break;
 		        //once the user clicks "login" on the welcome page, the login 
@@ -93,6 +95,7 @@ public class provisoServlet extends HttpServlet {
 		        //a number of reservations by customer id
 		        case "reservationReturn":
 		        	findReservation(request, response);
+		        	getPoints(request, response);
 		        	url = base + "lookup.jsp";
 		        	break;
 		        //search loyalty points by customer id using form
@@ -131,11 +134,14 @@ public class provisoServlet extends HttpServlet {
 		
 		//create new JdbcCustomerDao object
 		JdbcCustomerDao loginJAD=new JdbcCustomerDao();
-				
+		int userId= loginJAD.findId(user);
+		
 		//call JdbcCustomerDao add method, passing Customer object as parameter
 		boolean isValidUser = loginJAD.login(user, password);
 		
 		if (isValidUser == true) {
+			HttpSession session = request.getSession(false);
+			session.setAttribute("id", userId);
 			return "booking.jsp";
 		} else {
 			return "loginError.jsp";
@@ -221,7 +227,8 @@ public class provisoServlet extends HttpServlet {
 	}
 	
 	private int getPoints(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
-		int customerId = Integer.valueOf(request.getParameter("customerId"));
+		HttpSession session=request.getSession(false);
+		Integer customerId=(Integer)session.getAttribute("id");
 		
 		JdbcReservationDao findPoints = new JdbcReservationDao();
 		

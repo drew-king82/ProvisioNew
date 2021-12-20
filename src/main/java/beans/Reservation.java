@@ -1,4 +1,7 @@
 package beans;
+
+import java.text.DecimalFormat;
+
 //Some of this will need to be adjusted based on what fields we decide on for the database
 public class Reservation {
  private int reservationId;
@@ -13,6 +16,7 @@ public class Reservation {
  private int numberNights;
  private double cost;
  private int loyalty;
+ private DecimalFormat df = new DecimalFormat("#.##");
  
  public Reservation(int reservationId, int customerId, String roomSize, int wifi, int breakfast, int parking, int guests, String checkIn, String checkOut, int numberNights, int cost) {
 	 	this.reservationId = reservationId;
@@ -39,7 +43,7 @@ public class Reservation {
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.numberNights=numberNights;
-		this.cost=getCost(guests, numberNights, wifi, breakfast, parking);
+		this.cost=Math.round(getCost(guests, numberNights, wifi, breakfast, parking)*100/100);
 		this.loyalty=numberNights * 150;
 	}
  
